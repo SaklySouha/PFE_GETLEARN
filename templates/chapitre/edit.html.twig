@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Chapitre{% endblock %}
+
+{% block body %}
+    <h1>Edit Chapitre</h1>
+
+    {{ include('chapitre/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+    <table class="borderless  mt-5" >
+        <tr>
+
+            <td > <button style="margin:6px;"  class="btn btn-warning"><a class="text-light btn"   href="{{ path('chapitre_index') }}" >Edit</a></button></td>
+            <td  >       {{ include('chapitre/_delete_form.html.twig') }} </td>
+
+        </tr>
+    </table>
+
+{% endblock %}

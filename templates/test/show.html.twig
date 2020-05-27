@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block body %}
+    <h1>Test</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ test.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ test.titre }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ test.testfilename }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="borderless  mt-5" >
+        <tr>
+            <td  >  <button style="margin:6px;"  class="btn btn-primary"><a class="text-light btn "   href="{{ path('test_index') }}">Back to list</a></button>
+            </td>
+            <td > <button style="margin:6px;"  class="btn btn-warning"><a class="text-light btn"   href="{{ path('test_edit', {'id': test.id}) }}">Edit</a></button></td>
+            <td  >                {{ include('test/_delete_form.html.twig') }}
+
+
+
+
+
+
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

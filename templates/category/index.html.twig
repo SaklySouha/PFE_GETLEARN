@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Category </h1>
+    <p>
+        Ex consectetur aute aliqua Lorem magna sint aute reprehenderit exercitation exercitation. Ipsum eu do et officia
+        enim non occaecat adipisicing nisi ea ullamco. Anim ullamco magna est eu cupidatat commodo proident mollit eu
+        ea.
+    </p>
+
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Descri</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.titre }}</td>
+            <td>{{ category.descri }}</td>
+            <td>
+                <button class="btn btn-primary" style="margin:6px;"><a class="text-light"
+                                                                       style="text-decoration:none;"
+                                                                       href="{{ path('category_show', {'id': category.id}) }}">Show</a>
+                    <button class="btn btn-warning"><a class="text-light" style="text-decoration:none;"
+                                                       href="{{ path('category_edit', {'id': category.id}) }}">Edit</a>
+                    </button>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<button class="btn btn-success"><a class="text-light" style="text-decoration:none;"
+                                   href="{{ path('category_new') }}">Create new</a>
+    {% endblock %}

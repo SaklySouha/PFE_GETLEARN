@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Formations</h1>
+        <p>
+            Ex consectetur aute aliqua Lorem magna sint aute reprehenderit exercitation exercitation. Ipsum eu do et
+            officia enim non occaecat adipisicing nisi ea ullamco. Anim ullamco magna est eu cupidatat commodo proident
+            mollit eu ea.
+        </p>
+
+    </div>
+    {% for message in app.flashes('success') %}
+
+        <div class="alert alert-success">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+    <div class="container">
+
+        <div class="row flex">
+
+            {% for formation in formations %}
+
+
+                <div class="col-3" style="max-width: 33%;">
+                    <div class="card" style="margin-top:15px;">
+                        <div class="card-body">
+                            {% if formation.formationfilename %}
+                                <img src=" {{ vich_uploader_asset( formation, 'imageFormation') | imagine_filter('thumb') }}"
+                                     alt="card-img-top">
+                            {% endif %}
+                            <p class="card title">
+
+
+                            <h5>{{ formation.nom }}    </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ formation.category.titre }}</h6>
+
+
+                            </p>
+
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <b>Formater par: </b>
+                                </div>
+                                <div class="col-sm">
+                                    <i>{{ formation.formateur.nomf }} </i>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <b>Publiée le: </b>
+                                </div>
+                                <div class="col-sm">
+                                    <i>
+                                        <div class="text-primary">{{ formation.date ? formation.date|date('Y-m-d') : '' }}</div>
+                                    </i>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <b>Prix: </b>
+                                </div>
+                                <div class="col-sm">
+                                    <i>{{ formation.prix }} DT </i>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <b>Description: </b>
+                                    <div class="col-sm">
+
+                                        <i>{{ formation.descr }} </i>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <button class="btn btn-primary" style="margin:6px;"><a class="text-light"
+                                                                                   style="text-decoration:none;"
+                                                                                   href="{{ path('formation_show', {'id': formation.id}) }}">Show</a>
+                                <button class="btn btn-warning"><a class="text-light" style="text-decoration:none;"
+                                                                   href="{{ path('formation_edit', {'id': formation.id}) }}">Edit</a>
+                                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            {% endfor %}
+            <div class="card" style="margin:15px;">
+                <div class="card-body">
+                    <h5 class="card title">
+                        <a href="#">Une autre formation ici </a>
+                    </h5>
+                    <div class="text-primary">
+                        <button class="btn btn-success"><a class="text-light" style="text-decoration:none;"
+                                                           href="{{ path('formation_new') }}">Create new</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

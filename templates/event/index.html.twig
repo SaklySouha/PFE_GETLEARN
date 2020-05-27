@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+  <h1>Events</h1>
+<p>
+Ex consectetur aute aliqua Lorem magna sint aute reprehenderit exercitation exercitation. Ipsum eu do et officia enim non occaecat adipisicing nisi ea ullamco. Anim ullamco magna est eu cupidatat commodo proident mollit eu ea.
+</p>
+
+</div>
+{% for message in app.flashes('success')  %}
+
+<div class="alert alert-success"> 
+
+{{message}}
+
+</div>
+
+{% endfor  %}
+<div class="container">
+
+<div class="row flex" >
+
+ {% for event in events %}
+
+  <div class="col-3" style="max-width: 33%;">
+    <div class="card" style="margin-top:15px;" >
+     <div class="card-body">
+         {% if event.eventfilename %}
+             <img src=" {{  vich_uploader_asset( event, 'imageEvent') | imagine_filter('thumb') }}" alt="card-img-top">
+         {% endif %}
+      <p class="card title">
+     
+       
+<h5>{{ event.TitreE }}  </h5>
+   <h6 class="card-subtitle mb-2 text-muted">{{  event.category.titre }} </h6>
+
+
+       </p>
+
+
+
+
+<div class="row">
+    <div class="col-sm">
+<b>Formaté par:   </b>
+</div>
+    <div class="col-sm">
+   <i>{{  event.formateur.nomf }} </i> 
+   </div>
+  
+  </div>
+
+<div class="row">
+    <div class="col-sm">
+<b>Adresse:    </b>
+</div>
+    <div class="col-sm">
+   <i>{{ event.AdresseE }} </i> 
+   </div>
+  
+  </div>
+
+
+
+
+
+<div class="row">
+    <div class="col-sm">
+<b>Date:     </b>
+</div>
+    <div class="col-sm">
+   <i><div class="text-primary">{{ event.DateE ? event.DateE|date('Y-m-d') : '' }}</div> </i> 
+   </div>
+   
+  
+  </div>
+
+  
+  
+<div class="row">
+    <div class="col-sm">
+<b>Heure:    </b>
+</div>
+    <div class="col-sm">
+   <i>{{ event.HeureE ? event.HeureE|date('H:i:s') : '' }} </i> 
+   </div>
+  
+  </div>
+
+    <div class="row">
+    <div class="col-sm">
+    <b>Description:     </b>
+    <div class="col-sm">
+
+       <i>{{ event.DescrE }} </i>
+       </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+     <button  class="btn btn-primary" style="margin:6px;"><a class="text-light" style="text-decoration:none;" href="{{ path('event_show', {'id': event.id}) }}">Show</a>
+     <button  class="btn btn-warning"><a class="text-light" style="text-decoration:none;" href="{{ path('event_edit', {'id': event.id}) }}">Edit</a></button>
+     </div>
+    </div>
+    
+
+
+
+
+
+
+  </div>
+
+
+  
+          {% endfor %}
+ <div class="card" style="margin:15px;" >
+     <div class="card-body">
+      <h5 class="card title">
+<a href="#">Un autre event ici </a>
+      </h5>
+     <div class="text-primary"> 
+      <button  class="btn btn-success"><a class="text-light" style="text-decoration:none;"  href="{{ path('event_new') }}">Create new</a>
+</div>
+   
+     </div>
+    </div>
+</div>
+
+
+</div>
+
+{% endblock %}

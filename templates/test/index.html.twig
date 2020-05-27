@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test index{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Test</h1>
+    <p>
+        Ex consectetur aute aliqua Lorem magna sint aute reprehenderit exercitation exercitation. Ipsum eu do et officia
+        enim non occaecat adipisicing nisi ea ullamco. Anim ullamco magna est eu cupidatat commodo proident mollit eu
+        ea.
+    </p>
+
+</div>
+{% for message in app.flashes('success') %}
+
+    <div class="alert alert-success">
+
+        {{ message }}
+
+    </div>
+
+{% endfor %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Lien</th>
+        <th>Cours</th>
+
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for test in tests %}
+        <tr>
+            <td>{{ test.id }}</td>
+            <td>{{ test.titre }}</td>
+            <td>{{ test.testfilename }}</td>
+            <td>{{ test.cours.titre }}</td>
+
+            <td>
+                <button class="btn btn-primary" style="margin:6px;"><a class="text-light"
+                                                                       style="text-decoration:none;"
+                                                                       href="{{ path('test_show', {'id': test.id}) }}">Show</a>
+                    <button class="btn btn-warning"><a class="text-light" style="text-decoration:none;"
+                                                       href="{{ path('test_edit', {'id': test.id}) }}">Edit</a>
+                    </button>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<button class="btn btn-success"><a class="text-light" style="text-decoration:none;"
+                                   href="{{ path('test_new') }}">Create new</a>
+
+    {% endblock %}

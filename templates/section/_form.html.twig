@@ -1,0 +1,27 @@
+
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.titre) }} </div>
+    <div class="col-md-4">{{ form_row(form.chapitre) }} </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.videoSection) }} </div>
+    <div class="col-md-4">{{ form_row(form.imagevSection) }} </div>
+    <div class="col-md-4">{{ form_row(form.fichierSection) }} </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md">{{ form_row(form.descr) }} </div>
+
+
+
+</div>
+
+
+{{ form_widget(form) }}
+<button class="btn btn-success"><a class="btn">{{ button_label|default('Save') }}</a></button>
+{{ form_end(form) }}

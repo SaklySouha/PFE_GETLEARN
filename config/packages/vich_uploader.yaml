@@ -1,0 +1,38 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+      events_images:
+           uri_prefix: /images/events
+           upload_destination: '%kernel.project_dir%/public/images/events'
+           namer: Vich\UploaderBundle\Naming\UniqidNamer
+      formations_images:
+        uri_prefix: /images/formations
+        upload_destination: '%kernel.project_dir%/public/images/formations'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      sections_videos:
+        uri_prefix: /videos/sections
+        upload_destination: '%kernel.project_dir%/public/videos/sections'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      sections_fichiers:
+        uri_prefix: /fichiers/sections
+        upload_destination: '%kernel.project_dir%/public/fichiers/sections'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      sections_imagesv:
+        uri_prefix: /imagesv/sections
+        upload_destination: '%kernel.project_dir%/public/imagesv/sections'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      formateurs_images:
+        uri_prefix: /images/formateurs
+        upload_destination: '%kernel.project_dir%/public/images/formateurs'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      cours_images:
+        uri_prefix: /images/cours
+        upload_destination: '%kernel.project_dir%/public/images/cours'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+      fichiers_tests:
+        uri_prefix: /fichiers/tests
+        upload_destination: '%kernel.project_dir%/public/fichiers/tests'
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+

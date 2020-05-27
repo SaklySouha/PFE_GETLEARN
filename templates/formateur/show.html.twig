@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formateur{% endblock %}
+
+{% block body %}
+    <h1>Formateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ formateur.nomF }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ formateur.prenomF }}</td>
+            </tr>
+            <tr>
+                <th>Titre pro</th>
+                <td>{{ formateur.titreF }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Qui je suis ?</th>
+                <td>{{ formateur.defF}}</td>
+            </tr>
+
+
+            <tr>
+                <th>lien</th>
+                <td>{{ formateur.lienF}}</td>
+            </tr>
+      
+        </tbody>
+    </table>
+
+
+    <table class="borderless  mt-5" >
+        <tr>
+            <td  >  <button style="margin:6px;"  class="btn btn-primary"><a class="text-light btn "   href="{{ path('formateur_index') }}">Back to list</a></button>
+            </td>
+            <td > <button style="margin:6px;"  class="btn btn-warning"><a class="text-light btn"   href="{{ path('formateur_edit', {'id': formateur.id}) }}">Edit</a></button></td>
+            <td  >             {{ include('formateur/_delete_form.html.twig') }}
+
+
+
+
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Test{% endblock %}
+
+{% block body %}
+    <h1>Create new Test</h1>
+
+    {{ include('test/_form.html.twig') }}
+
+    <button style="margin-top:6px;"  class="btn btn-primary"><a class="text-light btn " href="{{ path('test_index') }}">Back to list</a></button>
+
+{% endblock %}

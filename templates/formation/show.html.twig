@@ -1,0 +1,68 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Formation {{ formation.id }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ formation.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ formation.date ? formation.date|date('Y-m-d') : '' }}</td>
+            </tr>
+
+              <tr>
+                <th>Prix</th>
+                <td>{{ formation.prix}}</td>
+            </tr>
+
+         <tr>
+                <th>Categorie</th>
+                <td> {{  formation.category.titre }}  </td>
+            </tr>
+
+                  <tr>
+                <th>Formateur</th>
+                <td> {{  formation.formateur.nomf }}</td>
+            </tr>
+
+
+                  <tr>
+                <th>Description</th>
+                <td> {{  formation.descr }}</td>
+            </tr>
+
+
+
+           
+          
+        </tbody>
+    </table>
+
+    <table class="borderless  mt-5" >
+            <tr>
+                <td  >  <button style="margin:6px;"  class="btn btn-primary"><a class="text-light btn "   href="{{ path('formation_index') }}">Back to list</a></button>
+</td>
+                <td > <button style="margin:6px;"  class="btn btn-warning"><a class="text-light btn"   href="{{ path('formation_edit', {'id': formation.id}) }}">Edit</a></button></td>
+                <td  >    {{ include('formation/_delete_form.html.twig') }}
+</td>
+            </tr>
+    </table>
+
+
+   
+
+    </div>
+{% endblock %}

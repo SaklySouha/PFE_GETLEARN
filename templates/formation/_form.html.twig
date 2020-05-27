@@ -1,0 +1,21 @@
+
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.nom) }} </div>
+    <div class="col-md-4">{{ form_row(form.date) }} </div>
+    <div class="col-md-4">{{ form_row(form.prix) }} </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.category) }} </div>
+    <div class="col-md-4">{{ form_row(form.formateur) }} </div>
+    <div class="col-md-4">{{ form_row(form.descr) }} </div>
+    <div class="col-md-4">{{ form_row(form.imageFormation) }} </div>
+
+</div>
+
+
+    {{ form_widget(form) }}
+    <button class="btn btn-success"><a class="btn">{{ button_label|default('Save') }}</a></button>
+{{ form_end(form) }}

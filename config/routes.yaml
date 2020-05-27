@@ -1,0 +1,48 @@
+home:
+    path: /home
+    controller: App\Controller\HomeController::home
+login:
+    path: /
+    controller: App\Controller\SecurityController::login
+
+users:
+    path: /users
+    controller: App\Controller\UserController::index
+
+formation:
+    path: /formation
+    controller: App\Controller\FormationController::index
+
+cours:
+    path: /cours
+    controller: App\Controller\CoursController::index
+
+category:
+    path: /category
+    controller: App\Controller\CategoryController::index
+
+event:
+    path: /event
+    controller: App\Controller\EventController::index
+
+formateur:
+    path: /formateur
+    controller: App\Controller\FormateurController::index
+
+test:
+    path: /test
+    controller: App\Controller\TestController::index
+
+
+chapitre:
+    path: /chapitre
+    controller: App\Controller\ChapitreController::index
+
+section:
+    path: /section
+    controller: App\Controller\SectionController::index
+
+
+
+
+

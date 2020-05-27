@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Section{% endblock %}
+
+{% block body %}
+    <h1>Create new Section</h1>
+
+    {{ include('section/_form.html.twig') }}
+
+    <button style="margin-top:6px;"  class="btn btn-primary"><a class="text-light btn " href="{{ path('section_index') }}">Back to list</a></button>
+
+{% endblock %}
