@@ -92,6 +92,8 @@ class ApiController extends AbstractController
         $cour = $formation->getCour();
 
         $arrayCour['id'] = $cour->getId();
+        $arrayCour['titre'] = $cour->getTitre();
+
         //A rajouter
 
         return new JsonResponse($arrayCour);
