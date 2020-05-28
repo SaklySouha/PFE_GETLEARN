@@ -88,7 +88,7 @@ class Formation
      * @ORM\OneToOne(targetEntity="App\Entity\Cours", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"formation"})
      */
-    private $Cours;
+    private $cour;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Formateur", inversedBy="Formation")
@@ -110,10 +110,25 @@ class Formation
     private $users;
 
 
+    /**
+     * @return Cours
+     */
+    public function getCour()
+    {
+        return $this->cour;
+    }
+
+    /**
+     * @param mixed $cour
+     */
+    public function setCour($cour)
+    {
+        $this->cour = $cour;
+    }
+
 
     public function __construct()
     {
-        $this->Cours = new ArrayCollection();
         $this->FormationUser = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
@@ -171,36 +186,6 @@ class Formation
         return $this;
     }
 
-    /**
-     * @return Collection|Cours[]
-     */
-    public function getCours(): Collection
-    {
-        return $this->Cours;
-    }
-
-    public function addCour(Cours $cour): self
-    {
-        if (!$this->Cours->contains($cour)) {
-            $this->Cours[] = $cour;
-            $cour->setFormation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCour(Cours $cour): self
-    {
-        if ($this->Cours->contains($cour)) {
-            $this->Cours->removeElement($cour);
-            // set the owning side to null (unless already changed)
-            if ($cour->getFormation() === $this) {
-                $cour->setFormation(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getFormateur(): ?Formateur
     {
@@ -310,6 +295,8 @@ class Formation
 
         return $this;
     }
+
+
 
 
 }

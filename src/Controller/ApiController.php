@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Chapitre;
 use App\Entity\Cours;
+use App\Entity\Formation;
 use App\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -76,5 +77,23 @@ class ApiController extends AbstractController
             $courx[] = $cou;
         }
         return new JsonResponse($courx);
+    }
+
+    /**
+     * @Route("/formation/{id}/cour", name="cours_by_formation", methods={"GET"})
+     */
+    public function getFormation(Formation $formation)
+    {
+        /**
+         * @var Formation $formation
+         */
+        $formation = $this->getDoctrine()->getRepository(Formation::class)->find($formation);
+
+        $cour = $formation->getCour();
+
+        $arrayCour['id'] = $cour->getId();
+        //A rajouter
+
+        return new JsonResponse($arrayCour);
     }
 }

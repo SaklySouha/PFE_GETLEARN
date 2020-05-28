@@ -2,6 +2,7 @@
 
 namespace App\Form;
 use App\Entity\Category;
+use App\Entity\Cours;
 use App\Entity\Formateur;
 use App\Entity\Formation;
 use Symfony\Component\Form\AbstractType;
@@ -21,6 +22,9 @@ class FormationType extends AbstractType
             ->add('nom')
             ->add('date')
             ->add('prix')
+            ->add('cour', EntityType::class,['class' => Cours::class,
+                'choice_label' => 'titre',
+                'label' => 'Cour'  ])
             ->add('category',EntityType::class,['class' => Category::class,
                                             'choice_label' => 'titre',
                                             'label' => 'Category'  ])

@@ -56,7 +56,7 @@ class User implements UserInterface
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="users")
      */
-    private $Formation;
+    private $Formations;
 
     public function __construct()
     {
@@ -201,11 +201,11 @@ class User implements UserInterface
 
 
     /**
-     * @return Collection|Formation[]
+     * @return mixed
      */
-    public function getFormation(): Collection
+    public function getFormations()
     {
-        return $this->Formation;
+        return $this->Formations;
     }
 
     public function addFormation(Formation $formation): self

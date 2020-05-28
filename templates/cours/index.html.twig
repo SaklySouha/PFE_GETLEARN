@@ -83,19 +83,17 @@
                                 </div>
 
             {% endfor %}
-                                {% if cours|length == 0 %}
-                    <div class="card" style="margin:15px;" >
-                        <div class="card-body">
-                            <h5 class="card title">
-                                <a href="#">Un autre cour ici </a>
-                            </h5>
-                            <div class="text-primary">
-                                <button  class="btn btn-success"><a class="text-light" style="text-decoration:none;"  href="{{ path('cours_new') }}">Create new</a>
-                            </div>
-
-                        </div>
+            <div class="card" style="margin:15px;" >
+                <div class="card-body">
+                    <h5 class="card title">
+                        <a href="#">Un autre cour ici </a>
+                    </h5>
+                    <div class="text-primary">
+                        <button  class="btn btn-success"><a class="text-light" style="text-decoration:none;"  href="{{ path('cours_new') }}">Create new</a>
                     </div>
-                                {% endif %}
+
+                </div>
+            </div>
         </div>
 
 
