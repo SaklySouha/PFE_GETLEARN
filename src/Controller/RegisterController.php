@@ -50,6 +50,7 @@ class RegisterController extends AbstractController
             $user->setNameU( $data['nameU']);
 
 
+
             $user->setPassword(
                 $passEncoder->encodePassword($user, $data['password'])
             );
@@ -83,20 +84,15 @@ class RegisterController extends AbstractController
 
             $em = $this->getDoctrine() -> getManager();
 
-            $user = $em->getRepository(User::class)->findOneBy(array('email'=>$email));
-            if($user!=null){
-                // tester si le mdp est correcte
-               /* $encoded = $passEncoder->encodePassword($user, $password);
-                dump($encoded);
-                dump($user->getPassword());die();*/
-                if(true){
-                    return new JsonResponse(['status'=>"success","user"=>["email"=>$user->getEmail()]],200);
-                }
+            $user = $em->getRepository(User::class)->findOneBy(array('email'=>$email, 'password'=>$password));
+            if($user instanceof User){
 
-                return new JsonResponse(['status'=>"failure"],401);
+                    return new JsonResponse(['status'=>"success","user"=>["id"=>$user->getId(), "email"=>$user->getEmail()]],200);
+
             }else{
                 // retourner erreur
-                return new JsonResponse(['status'=>$email],404);
+                return new JsonResponse(['status'=>$email, 'message'=> 'mot de passe incorrecte'],404);
+
             }
 
 
