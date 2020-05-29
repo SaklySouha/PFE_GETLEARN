@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Chapitre;
 use App\Entity\Cours;
+use App\Entity\Favoris;
 use App\Entity\Formation;
 use App\Entity\Section;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,6 +32,28 @@ class ApiController extends AbstractController
         foreach($chapitres as $chap){
             $cou["id"] = $chap->getId();
             $cou["titre"] = $chap->getTitre();
+            $courx[] = $cou;
+        }
+        return new JsonResponse($courx);
+    }
+
+    /**
+     * @Route("/favoris/{id}", name="favoris_by_user", methods={"GET"})
+     */
+    public function getFavoris(User $user)
+    {
+        /**
+         * @var User $user
+         */
+
+        $favoris = $user->getFavoris();
+        $courx = array();
+
+        /**
+         * @var Favoris $fav
+         */
+        foreach($favoris as $fav){
+            $cou["id"] = $fav->getId();
             $courx[] = $cou;
         }
         return new JsonResponse($courx);

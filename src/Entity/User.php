@@ -51,6 +51,10 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Favoris", mappedBy="user")
+     */
+    private $favoris;
 
 
     /**
@@ -87,7 +91,13 @@ class User implements UserInterface
     }
 
 
-
+    /**
+     * @return mixed
+     */
+    public function getFavoris()
+    {
+        return $this->favoris;
+    }
 
     public function getEmail(): ?string
     {
