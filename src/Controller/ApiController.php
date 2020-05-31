@@ -53,7 +53,13 @@ class ApiController extends AbstractController
          * @var Favoris $fav
          */
         foreach($favoris as $fav){
-            $cou["id"] = $fav->getId();
+            $cou["id"] = $fav->getFormation()->getId();
+            $cou["nom"] = $fav->getFormation()->getNom();
+            $cou["descr"] = $fav->getFormation()->getDescr();
+            $cou["formationfilename"] = $fav->getFormation()->getFormationfilename();
+
+
+
             $courx[] = $cou;
         }
         return new JsonResponse($courx);

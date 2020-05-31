@@ -62,12 +62,16 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="user_edit", methods={"PUT"})
      */
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
+        // 1- if password actuel === password fil base --> Ok
+        // ---> save new user
+            // Si non throw error 'Password not match'
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

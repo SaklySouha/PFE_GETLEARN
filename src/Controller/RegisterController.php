@@ -85,11 +85,15 @@ class RegisterController extends AbstractController
             $em = $this->getDoctrine() -> getManager();
 
             $user = $em->getRepository(User::class)->findOneBy(array('email'=>$email, 'password'=>$password));
-            if($user instanceof User){
+        if($user instanceof User){
 
-                    return new JsonResponse(['status'=>"success","user"=>["id"=>$user->getId(), "email"=>$user->getEmail()]],200);
+            return new JsonResponse(['status'=>"success","user_id" => $user->getId(),"email" => $email,"name"=> $user->getNameU(),
+                "user"=>
+                    [
+                        $user->setPassword("")
+                    ]],200);
 
-            }else{
+        }else{
                 // retourner erreur
                 return new JsonResponse(['status'=>$email, 'message'=> 'mot de passe incorrecte'],404);
 
@@ -102,6 +106,6 @@ class RegisterController extends AbstractController
      * @Route("/api/userinfo/{id}", name="api_userinfo", methods="GET")
      */
     public function userinfo(User $user){
-        return $this->json(['info'=>$user]);
+        return $this->json($user);
     }
 }
