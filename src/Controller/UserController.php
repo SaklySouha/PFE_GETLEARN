@@ -95,14 +95,15 @@ class UserController extends AbstractController
     public function editFront(Request $request, User $user)
     {
 
+        if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+            $data = json_decode($request->getContent(), true);
+            $request->request->replace(is_array($data) ? $data : array());
+        }
+
         // 1- if password actuel === password fil base --> Ok
         // ---> save new user
         // Si non throw error 'Password not match'
 
-
-        if ($request->request->get('nameU') === ''){
-            throw new \Exception("Empty name");
-        }
 
         if ($request->request->get('password') != $user->getPassword()){
             throw new \Exception("Password not match");
