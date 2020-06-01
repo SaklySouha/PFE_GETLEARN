@@ -39,5 +39,13 @@ security:
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/login, roles: ROLE_ADMIN }
-        - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/users, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/formation, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/category, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/cours, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/event, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/formateur, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/test, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/chapitre, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/section, roles: IS_AUTHENTICATED_FULLY }
 
