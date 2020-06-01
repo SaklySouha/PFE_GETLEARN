@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -85,6 +86,39 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+
+    /**
+     * @Route("/front/{id}", name="user_front_edit", methods={"PUT"})
+     */
+    public function editFront(Request $request, User $user)
+    {
+
+        // 1- if password actuel === password fil base --> Ok
+        // ---> save new user
+        // Si non throw error 'Password not match'
+
+
+        if ($request->request->get('password') == ''){
+            throw new \Exception("Empty name");
+        }
+
+        if ($request->request->get('password') !== $user->getPassword()){
+            throw new \Exception("Password not match");
+        }
+
+        $user->setNameU($request->request->get('nameU'));
+        $user->setEmail($request->request->get('email'));
+        $user->setRegion($request->request->get('region'));
+        $user->setPays($request->request->get('pays'));
+        $user->setPassword($request->request->get('newPassword'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return new JsonResponse(['status'=>$user, 'message'=> 'Utilisateur modifié'],200);
     }
 
     /**
