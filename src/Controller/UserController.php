@@ -104,7 +104,7 @@ class UserController extends AbstractController
             throw new \Exception("Empty name");
         }
 
-        if ($request->request->get('password') !== $user->getPassword()){
+        if ($request->request->get('password') != $user->getPassword()){
             throw new \Exception("Password not match");
         }
 
